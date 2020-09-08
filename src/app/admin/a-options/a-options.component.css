@@ -1,0 +1,47 @@
+
+
+/* x ღერძზე ჩნდება scroll, რის გამოც საჭირო გახდა ამის დაწერა... მისი მეშვეობით არსებული scroll ქრება */
+.row{
+    margin-right: 0px;
+}
+
+
+.card {
+    margin-top: 30px;
+}
+
+.card > .card-header{
+    background: #c8d3f3;
+}
+
+.customizeCardBody{
+    padding: 0px;
+}
+
+
+
+
+table tbody tr:first-child td {
+    border: none;
+}
+
+
+
+#boxForImages{
+    width: 100%; 
+    height: max-content; 
+    background: #fff; 
+    border: 2px solid #d0d0d0;
+}
+
+#imgSelectButton {
+    background: #ede9e3;
+    margin: 0px;
+    padding: 13px 15px;
+    margin: 5px;
+}
+
+.logoImg{
+    height: 50px;
+    margin: 5px;
+}

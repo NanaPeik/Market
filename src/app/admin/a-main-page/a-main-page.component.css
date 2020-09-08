@@ -1,0 +1,74 @@
+
+
+table{
+    margin-bottom: 0px;
+}
+
+table td{
+    position: relative
+}
+
+.form-check{
+    display: inline;
+}
+
+table td i{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+#addNewPage{
+    float: right;
+}
+
+
+
+
+
+
+.card-header{
+    background: #c8d3f3
+}
+
+#slider{
+    margin-top: 20px;
+}
+
+#slider .card-body{
+    position: relative;
+}
+
+#slider .card-body button{
+    background: #bddffe;
+    padding: 25px;
+    margin-right: 5px;
+}
+
+#slider .card-body #count{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+#contactInformation{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+
+#openFileSelect {
+    background: #ede9e3;
+    margin: 0px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 24px 20px;
+}
+
+.sliderImages{
+    height: 75px; 
+    margin-right: 5px; 
+    margin-bottom: 5px;
+}

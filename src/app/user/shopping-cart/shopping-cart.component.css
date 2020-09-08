@@ -1,0 +1,76 @@
+#productPreview thead tr{
+    background: #e2e2f6;
+}
+
+#productPreview > tbody > tr td > i{
+    float: right;
+    visibility: hidden;
+    color: #96a2ae;
+    cursor: pointer;
+}
+#productPreview > tbody > tr:hover td > i{
+    visibility: visible;
+}
+#productPreview > tbody > tr:nth-child(even){
+    background: #f0f0f0;
+}
+#productPreview > tbody > tr:nth-child(odd){
+    background: #fff;
+}
+
+#productPreview tfoot tr{
+    background: #f6f6f6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#order table tr:not(:last-child) td{
+    padding-bottom:  50px !important;
+}
+
+#order table input {
+  outline: 0px;
+  border-width: 0 0 1px;
+  border-color: #8c8383;
+  background-color: transparent;
+  margin-left: 10px;
+}
+
+
+
+
+
+.productListOnside{
+    margin-top: 20px;
+    position: relative;
+    border: 1px solid #96a2ae;
+    padding: 5px;
+}
+
+.productListOnside img{
+    width: 60%;
+}
+
+.productListOnside i{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #96a2ae;
+    cursor: pointer;
+}
+
+.productListOnside .productInformation{
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+}

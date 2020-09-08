@@ -1,0 +1,15 @@
+
+table thead{
+    background: #c8d3f3;
+}
+
+table thead th{
+    width: 25%;
+}
+
+table tbody tr td i{
+    cursor: pointer;
+}
+.text-justify{
+    color:white!important;
+}

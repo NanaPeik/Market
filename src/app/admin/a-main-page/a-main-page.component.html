@@ -1,0 +1,120 @@
+<table class="table bg-white table-hover">
+    <tbody>
+        <tr *ngFor="let x of tableDatas">
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                </div>
+                <span>{{x}}</span>
+                <i class="material-icons">border_color</i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button id="addNewPage" class="btn btn-success" (click)="openNewPageModal()">+</button>
+
+<div class="clear"></div>
+
+<div id="slider" class="card">
+    <div class="card-header">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="enableSlider">
+            <label class="form-check-label" for="enableSlider">სლაიდერი</label>
+        </div>
+    </div>
+    <div class="card-body">
+        <label id="openFileSelect" class="btn btn-default" [hidden]="!(sliderImg.length < maxSliderImageLength)">
+            add <input type="file" (change)="uploadImage.onInputChange($event.target, sliderImg)" accept="image/*" hidden>
+        </label>
+
+        <img class="sliderImages" *ngFor="let x of sliderImg" src="{{x}}" alt="your image" />
+
+        <span id="count">{{sliderImg.length + '/' + maxSliderImageLength}}</span>
+    </div>
+</div>
+
+<div id="contactInformation" class="card">
+    <div class="card-header">საკონტაქტო ინფორმაცია</div>
+    <div class="card-body">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <label for="companyName">კომპანიის დასახელება</label>
+                    <input type="text" class="form-control" id="companyName" name="companyName"
+                        [(ngModel)]="contactInformation.CompanyName">
+                </div>
+                <div class="col">
+                    <label for="companyName_ENG">კომპანიის დასახელება(ENG)</label>
+                    <input type="text" class="form-control" id="companyName_ENG" name="companyName_ENG"
+                        [(ngModel)]="contactInformation.CompanyNameEng">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="companyPhoneNumber">კომპანიის ტელეფონი</label>
+                    <input type="text" class="form-control" id="companyPhoneNumber" name="companyPhoneNumber"
+                        [(ngModel)]="contactInformation.PhoneNumber">
+                </div>
+                <div class="col">
+                    <label for="companyEmail">კომპანიის ელ.ფოსტა</label>
+                    <input type="text" class="form-control" id="companyEmail" name="companyEmail"
+                        [(ngModel)]="contactInformation.Email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="companyAddress">მისამართი</label>
+                    <input type="text" class="form-control" id="companyAddress" name="companyAddress"
+                        [(ngModel)]="contactInformation.Address">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="showMap" [checked]="contactInformation.Map"
+                            (change)="contactInformation.Map = !contactInformation.Map">
+                        <label class="form-check-label" for="showMap">გამოჩნდეს რუკა</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-success" style="display: inline-block !important;"
+                    (click)="changeContactInfo()">შენახვა</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<div id="newPageModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <label for="pageName">გვერდის სახელი</label>
+                            <input type="text" class="form-control" id="pageName">
+                        </div>
+                        <div class="col">
+                            <label for="pageName_ENG">გვერდის სახელი(ENG)</label>
+                            <input type="text" class="form-control" id="pageName_ENG">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="textOnPage">ტექსტი გვერდზე</label>
+                            <textarea class="form-control" id="textOnPage" rows="10"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">უკან</button>
+                <button type="button" class="btn btn-success">შენახვა</button>
+            </div>
+        </div>
+    </div>
+</div>

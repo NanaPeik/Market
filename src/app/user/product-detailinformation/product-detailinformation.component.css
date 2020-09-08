@@ -1,0 +1,99 @@
+
+#parentDiv{
+    padding: 20px;
+    background: #fff
+}
+
+
+
+
+
+
+#slider{
+    padding:0px
+}
+
+#navigation{
+    position: relative;
+    margin-top: 5px;
+}
+
+#navigation > ol{
+    position: relative;
+}
+
+#navigation > ol > li{
+    background-size: cover !important;
+    background-position: center center !important;
+    width: 70px !important; 
+    height: 30px !important;
+}
+
+#navigation > ol > a{
+    position: relative;
+    filter: invert(1);
+}
+
+
+
+
+#productMainInfo{
+    background: #f0f0f0;
+    padding: 20px;
+    height: fit-content;
+}
+
+
+#quantity{
+    display: flex;
+}
+
+#quantity span{
+    line-height: 50px;
+}
+
+#quantity table td {
+    border: 2px solid #aeadaa;
+    margin: 0px;
+    padding: 0px;
+}
+#quantity table td > button{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+    border-radius: 0px;
+}
+
+#quantity table td#count{
+    width: 45px; 
+    text-align: center;
+    background: #fff;
+}
+
+
+
+
+
+#productDetailInformation{
+    padding:0px;
+}
+
+#productDetailInformation table{
+    width: 100%;
+    border: 1px solid #dedede;
+    border-top: none;
+}
+
+#productDetailInformation table > tr:nth-child(even){
+    background: #fff;
+}
+#productDetailInformation table > tr:nth-child(odd){
+    background: #f0f0f0;
+} 
+
+#productDetailInformation table td{
+    padding: 10px;
+}
+#productDetailInformation table td:first-child{
+    width: 1px;
+}

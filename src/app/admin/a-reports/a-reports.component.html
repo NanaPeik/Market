@@ -1,0 +1,40 @@
+
+
+<div>
+    <mat-form-field class="mr-3">
+        <mat-label>დან</mat-label>
+        <input matInput [matDatepicker]="one" [(ngModel)]="startDate" (dateChange)="changePicker()">
+        <mat-datepicker-toggle [for]="one" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #one></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>მდე</mat-label>
+        <input matInput [matDatepicker]="two" [(ngModel)]="endDate" (dateChange)="changePicker()">
+        <mat-datepicker-toggle [for]="two" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #two></mat-datepicker>
+    </mat-form-field>
+</div>
+
+
+<table class="table table-bordered bg-white">
+    <thead>
+        <tr>
+            <th>სულ თანხა</th>
+            <th>სულ შეკვეთები</th>
+            <th>ვიზიტები</th>
+            <th>მომხმარებლები</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="datasForTable.length == 0">
+            <td colspan="4">ცხრილი ცარიელია...</td>
+        </tr>
+        <tr *ngFor="let x of datasForTable">
+            <td>{{x.PriceAmount}}</td>
+            <td>{{x.Orders}}</td>
+            <td>{{x.Visit}}</td>
+            <td>{{x.User}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+<div [ngSwitch]="globalVariables.role">
+  <!-- ვიზუალი user_სთვის -->
+  <div *ngSwitchCase="'user'">
+    <app-header></app-header>
+    <div style="padding-top: 110px;">
+      <!-- რადგან header არის flex გვჭირდება padding... -->
+      <p class="padding_globally m-0">{{globalVariables.routTiTle}}</p>
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <!-- ვიზუალი admin_სთვის -->
+  <div *ngSwitchCase="'admin'">
+    <app-dashboard></app-dashboard>
+  </div>
+
+  <!--  -->
+  <div *ngSwitchCase="''">
+    <app-error-page></app-error-page>
+  </div>
+</div>
+
+
+
+<!-- სპინერი... -->
+<div id="spinner_parent">
+  <div class="spinner">Loading...</div>
+</div>
+
+
+
+
+
+<!-- 
+  
+<div *ngIf="globalVariables.role == 'user'">
+  <app-header></app-header>
+  <div style="padding-top: 110px;">
+    <p class="padding_globally m-0">{{globalVariables.routTiTle}}</p>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div *ngIf="globalVariables.role == 'admin'">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="globalVariables.role == ''">
+  <app-error-page></app-error-page>
+</div>
+ -->

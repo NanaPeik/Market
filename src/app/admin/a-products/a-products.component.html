@@ -1,0 +1,160 @@
+<div *ngIf="showTable; else elseBlock">
+    <button class="btn btn-success" (click)="changeContent()">+ ახალი პროდუქტი</button>
+
+    <table class="table table-bordered bg-white">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>სურათი</th>
+                <th>კოდი</th>
+                <th>დასახელება</th>
+                <th>კატეგორია</th>
+                <th>ფასი</th>
+                <th>რაოდენობა</th>
+                <th>სტატუსი</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="datasForTable.length == 0">
+                <td colspan="8">ცხრილი ცარიელია</td>
+            </tr>
+            <tr *ngFor="let x of datasForTable; let i = index">
+                <td>{{i+1}}</td>
+                <td>
+                    <img src="{{x.Picture}}" alt="">
+                </td>
+                <td>{{x.ProductCode}}</td>
+                <td>{{x.ProductName}}</td>
+                <td>{{x.Category}}</td>
+                <td>{{x.Cost}}</td>
+                <td>{{x.Quantity}}</td>
+                <td>
+                    <select class="selectpicker" title="..." multiple data-max-options="1">
+                        <option *ngFor="let j of statusList" value="{{j.Code}}" [selected]="j.Code == x.Status" disabled>{{j.Name}}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #elseBlock>
+    <div class="card mb-5">
+        <div class="card-header">ახალი პროდუქტი</div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <label for="category">კატეგორია</label>
+                        <input type="text" class="form-control" id="category" name="category" [(ngModel)]="newProduct.category">
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="name">დასახელება</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newProduct.productName">
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="price">ფასი</label>
+                        <input type="number" class="form-control" id="price" name="price" [(ngModel)]="newProduct.price">
+                    </div>
+                    <div class="col">
+                        <label for="oldPrice">ძველი ფასი</label>
+                        <input type="number" class="form-control" id="oldPrice" name="oldPrice" [(ngModel)]="newProduct.oldPrice">
+                    </div>
+                    <div class="col">
+                        <label for="quantity">რაოდენობა</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="newProduct.quantity">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="code">კოდი</label>
+                        <input type="text" class="form-control" id="code" name="code" [(ngModel)]="newProduct.productCode">
+                    </div>
+                    <div class="col">
+                        <label for="barCode">შტრიხკოდი</label>
+                        <input type="text" class="form-control" id="barCode">
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </form>
+
+            <div>
+                <span>სურათები</span>
+                <div class="customContainers" id="boxForImages">
+                    <label id="imgSelectButton" class="btn btn-default">
+                        add <input type="file" (change)="uploadImage.onInputChange($event.target, imgList)" accept="image/*" hidden>
+                    </label>
+                    
+                    <img class="logoImg" *ngFor="let x of imgList" src="{{x}}" alt="your image" />
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="showInPopularProductList" [checked]="newProduct.favorite" (change)="newProduct.favorite = !newProduct.favorite">
+                    <label class="form-check-label" for="showInPopularProductList">გამოჩნდეს პოპულარულ
+                        პროდუქტებში</label>
+                </div>
+
+                <span class="mt-3 d-block">მახასიათებლები</span>
+                <div class="customContainers">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" value="ბრენდი" disabled>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="brand" [(ngModel)]="newProduct.brand">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" value="ქვეყანა" disabled>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="country" [(ngModel)]="newProduct.country">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <span class="mt-3 d-block">მსგავსი პროდუქტები</span>
+                <div class="customContainers">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" value="მსგავსი პროდუქტი">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="justify-content-center mt-3" style="display: flex;">
+                <button class="btn btn-secondary" (click)="changeContent()">გაუქმება</button>
+                <button class="btn btn-success" (click)="addNewProduct()">შენახვა</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--
+<form>
+    <div class="row">
+        <div class="col">
+            <label for="companyName">კომპანიის დასახელება</label>
+            <input type="text" class="form-control" id="companyName">
+        </div>
+        <div class="col">
+            <label for="companyName_ENG">კომპანიის დასახელება(ENG)</label>
+            <input type="text" class="form-control" id="companyName_ENG">
+        </div>
+    </div>
+</form>
+-->

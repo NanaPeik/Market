@@ -1,0 +1,39 @@
+
+.products{
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin: 4px !important;
+    flex: 0 1 calc(20% - 8px);
+    cursor: pointer;
+}
+
+.products > .heartIcon{
+    float: right
+}
+
+.products_detail{
+    position: absolute;
+    bottom:0px;
+    width: 100%;
+}
+
+.products_detail > .name{
+    float: left;
+}
+
+.products_detail > .shoppingCartIcon{
+    float: right;
+}
+
+
+#parent{
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+}
+
+
+

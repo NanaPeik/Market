@@ -1,0 +1,25 @@
+
+#leftSide{
+    float: left;
+    width: 20%;
+    margin-right: 1%;
+}
+
+#leftSide .card-header{
+    background: #a0a0a0;
+    color: #fff
+}
+
+#leftSide li{
+    cursor: pointer;
+}
+
+#leftSide li.actived{
+    background: #a0a0a0;
+    color: #fff;
+}
+
+#rightSide{
+    float: left;
+    width: 79%;
+}

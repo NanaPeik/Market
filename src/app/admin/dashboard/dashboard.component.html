@@ -1,0 +1,62 @@
+<div class="padding_globally">
+    <app-a-header></app-a-header>
+
+
+    <div style="margin-top: 50px !important;">
+        <div id="leftSide">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">მართვის პანელი</div>
+                <div class="card-body">
+                    USER01
+                    <br>
+                    Administrator
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li routerLinkActive="actived" class="list-group-item" routerLink="/admin/home">
+                        მთავარი გვერდი
+                    </li>
+                    <li routerLinkActive="actived" class="list-group-item" routerLink="/admin/categories">
+                        კატეგორიები
+                    </li>
+                    <li routerLinkActive="actived" class="list-group-item" routerLink="/admin/products">პროდუქტები</li>
+                    <li routerLinkActive="actived" class="list-group-item" routerLink="/admin/options">პარამეტრები</li>
+                    <li routerLinkActive="actived" class="list-group-item" routerLink="/admin/reports">რეპორტები</li>
+                    <li routerLinkActive="actived" class="list-group-item" routerLink="/admin/users">მომხმარებლები</li>
+                    <!--  routerLinkActive="actived" -->
+                </ul>
+            </div>
+        </div>
+
+        <div id="rightSide">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- <div class="row m-0" style="margin-top: 50px !important;">
+        <div class="col-lg-3" style="background: red;">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">მართვის პანელი</div>
+                <div class="card-body">
+                    <p>USER01</p>
+                    <p>Administrator</p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">მთავარი გვერდი</div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">კატეგორიები</li>
+                  <li class="list-group-item">პროდუქტები</li>
+                  <li class="list-group-item">პარამეტრები</li>
+                  <li class="list-group-item">რეპორტები</li>
+                </ul>
+              </div>
+        </div>
+
+        <div class="col-lg-9" style="background: green;">
+            <router-outlet></router-outlet>
+        </div>
+    </div> -->
+</div>

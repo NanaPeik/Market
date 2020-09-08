@@ -1,0 +1,66 @@
+<div class="padding_globally">
+    <div class="row m-0">
+        <div id="productList" class="col-lg-10">
+            <app-productlist-width-pagination></app-productlist-width-pagination>
+        </div>
+
+        <div id="filtration" class="col-lg-2">
+            <div class="accordion">
+
+                <div class="card">
+                    <div class="card-header text-center" id="headingOne" data-toggle="collapse"
+                        data-target="#collapseOne" type="button">
+                        კატეგორიები
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                        <div class="card-body">
+                            1
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header text-center" id="headingTwo" data-toggle="collapse"
+                        data-target="#collapseTwo" type="button">
+                        ფასი
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo">
+                        <div class="card-body">
+                            <form style="display: flex;">
+                                <input type="number" class="form-control" value="0" />
+                                <input type="number" class="form-control" value="100" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header text-center" id="headingThree" data-toggle="collapse"
+                        data-target="#collapseThree" type="button">
+                        ბრენდი
+                    </div>
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree">
+                        <div class="card-body">
+                            
+                            <form>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="brand1">
+                                    <label class="form-check-label" for="brand1">BRAND 1</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="brand2">
+                                    <label class="form-check-label" for="brand2">BRAND 2</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="brand3">
+                                    <label class="form-check-label" for="brand3">BRAND 3</label>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

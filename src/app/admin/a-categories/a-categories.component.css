@@ -1,0 +1,16 @@
+
+table thead{
+    background: #b2c3f5;
+}
+
+table tbody{
+    border: 1px solid #b9bbc0;
+}
+
+table tr i{
+    float: right;
+    right: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 2px;
+}

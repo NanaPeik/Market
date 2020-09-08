@@ -1,0 +1,42 @@
+<div id="parent">
+    <div class="products" *ngFor="let x of productList" [ngStyle]="{'background-image': 'url(' + x.ImgURL + ')'}"
+        [routerLink]="['/user/productDetailInformation', x.ProductCode]">
+        <i class="material-icons heartIcon" (click)="changeFavoriteIcons.func($event, '123321')">{{x.FavoriteStatus ? "favorite" : "favorite_border"}}</i>
+        <!-- <i class="material-icons heartIcon">favorite_border</i> -->
+
+        <br>
+
+        <div class="products_detail">
+            <span class="productName">{{x.ProductName}}</span>
+
+            <i class="material-icons shoppingCartIcon">shopping_cart</i>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="m-auto">
+    <ul id="customPagination" class="pagination m-auto" style="width: fit-content;">
+        <li (click)="pageChanged('prev')" class="page-item" [class.disabled]="disablePrevButton"
+            [style.cursor]="disablePrevButton ? 'not-allowed' : 'pointer'">
+            <a class="page-link" [routerLink]="" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+
+        <li (click)="pageChanged(i+1)" class="page-item " *ngFor="let x of pageNumber; let i = index; let first = first"
+            [class.active]="first">
+            <a class="page-link" [routerLink]="">{{x}}</a>
+        </li>
+
+        <li (click)="pageChanged('next')" class="page-item" [class.disabled]="disableNextButton"
+            [style.cursor]="disableNextButton ? 'not-allowed' : 'pointer'">
+            <a class="page-link" [routerLink]="" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</div>

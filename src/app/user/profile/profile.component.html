@@ -1,0 +1,116 @@
+<div class="padding_globally">
+    <div class="container">
+        <h1>პროფილი</h1>
+
+
+        <div class="row m-0">
+            <div id="box1" class="col-lg-8">
+                <div class="container">
+
+                    <table>
+                        <tr>
+                            <td>
+                                <span>ძველი პაროლი</span>
+                            </td>
+                            <td>
+                                <input type="email" class="form-control" #oldPass>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>ახალი პაროლი</span>
+                            </td>
+                            <td>
+                                <input type="password" class="form-control" #newPass>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>გაიმეორე პაროლი</span>
+                            </td>
+                            <td>
+                                <input type="password" class="form-control" #newPassReturn>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-success m-auto" (click)="changeUserPassword(oldPass,newPass,newPassReturn)">პაროლის შეცვლა</button>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>სახელი</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="UserDetails.FirstName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>გვარი</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="UserDetails.LastName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>ტელეფონი</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="UserDetails.PhoneNumber">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>პირადი ნომერი</span>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" [(ngModel)]="UserDetails.PN">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span>ქვეყანა</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="UserDetails.Country">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span>ქალაქი</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="UserDetails.City">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span>მისამართი</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" [(ngModel)]="UserDetails.Address">
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="text-right">+ ახალი მისამართის დამატება</p>
+                    <button class="btn btn-success m-auto" (click)="saveUserinfoDetiles()">შენახვა</button>
+                </div>
+            </div>
+
+            <div id="box2" class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                      Featured
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">სასურველი პროდუქტები <span>{{userFeatured.ProductAmount}}</span></li>
+                      <li class="list-group-item">შეკვეთები <span>{{userFeatured.OrdersAmount}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

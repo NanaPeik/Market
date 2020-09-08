@@ -1,0 +1,36 @@
+<table class="table bg-white">
+  <thead>
+    <tr>
+      <th>ელ.ფოსტა</th>
+      <th>სტატუსი</th>
+      <th>ქმედებები</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="tabledatas.length == 0">
+      <td colspan="3">ცხრილი ცარიელია...</td>
+    </tr>
+
+    <tr [style.background-color]="x.BlockStatus == true ? 'red' : 'white'" *ngFor="let x of tabledatas">
+      <td>{{x.Email}}</td>
+      <td>{{x.Status}}</td>
+      <td>
+        <!-- <div *ngIf="condition; else elseBlock">Content to render when condition is true.</div>
+<ng-template #elseBlock>Content to render when condition is false.</ng-template> -->
+        <i *ngIf="x.BlockStatus==false else elseBorder" class="material-icons text-secondary" (click)="actionsOnUsers('edit', x.PN)">border_color</i>
+        <ng-template #elseBorder>
+          <i class="material-icons text-justify" (click)="actionsOnUsers('edit', x.PN)">border_color</i>
+        </ng-template>
+        <i *ngIf="x.BlockStatus==false else elseBlock" class="material-icons text-danger" (click)="actionsOnUsers('block', x.PN)">block</i>
+        <ng-template #elseBlock>
+          <i class="material-icons text-justify" (click)="actionsOnUsers('block', x.PN)">block</i>
+        </ng-template>
+        <i *ngIf="x.BlockStatus==false else elseDelete" class="material-icons text-danger" (click)="actionsOnUsers('delete', x.PN,x.BlockStatus)">delete_forever</i>
+        <ng-template #elseDelete>
+          <i class="material-icons text-justify" (click)="actionsOnUsers('delete', x.PN,x.BlockStatus)">delete_forever</i>
+        </ng-template>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,56 @@
+<button class="btn btn-success" (click)="openAddNewCategory()">ახალი კატეგორიის დამატება</button>
+
+<table class="table bg-white table-striped">
+    <thead>
+        <tr>
+            <th>კატეგორიები</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="tableDatas.length == 0">
+            <td colspan="1">ცხრილი ცარიელია</td>
+        </tr>
+        <tr *ngFor="let x of tableDatas">
+            <td><span>{{x.CategoryName}}</span>
+                <i class="material-icons" (click)="editCategories('edit',x.CategoryCode,x.CategoryName)">border_color</i>
+                <i class="material-icons text-danger" (click)="editCategories('delete', x.CategoryCode,x.CategoryName)">delete_forever</i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div id="addNewCategory" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ახალი კატეგორია</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div>
+                        <label for="name">დასახელება</label>
+                        <input class="form-control" id="name" name="name" [(ngModel)]="categoryInformation.CategoryName">
+                    </div>
+                    <div>
+                        <label for="name_ENG">დასახელება(ENG)</label>
+                        <input class="form-control" id="name_ENG" name="name_Eng" [(ngModel)]="categoryInformation.CategotyNameEng">
+                    </div>
+                    <div>
+                        <label for="parentCategory">მშობელი კატეგორია</label>
+                        <input class="form-control" id="parentCategory" name="parent_name" [(ngModel)]="categoryInformation.Parentcategory">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">უკან</button>
+                <button type="button" class="btn btn-success" (click)="createNewCategory()">შენახვა</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

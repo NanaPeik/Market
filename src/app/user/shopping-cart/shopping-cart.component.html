@@ -1,0 +1,152 @@
+<div class="padding_globally">
+    <h1>{{title}}</h1>
+
+    <table id="productPreview" class="table" *ngIf="preview; else orderForm">
+        <thead>
+            <tr>
+                <th scope="col">დასახელება</th>
+                <th scope="col">ერთეულის ფასი</th>
+                <th scope="col">ფასდაკლება</th>
+                <th scope="col">რაოდენობა</th>
+                <th scope="col">ჯამი</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="productList.length == 0">
+                <td colspan="5">ცხრილი ცარიელია...</td>
+            </tr>
+            <tr *ngFor="let x of productList">
+                <td>{{x.ProductName}}</td>
+                <td>{{x.Price}}</td>
+                <td>{{x.Sale}}%</td>
+                <td>{{x.Quantity}}</td>
+                <td>
+                    {{x.Quantity * x.Price}}
+                    <i class="material-icons" (click)="removeItemFromTable(x.ProductCode)">cancell</i>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-right">ჯამური ღირებულება {{totalCost}} ₾</td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <div style="float: right;">
+                        <button class="btn btn-success" (click)="makeOrder()">შეკვეთის გაფორმება</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <ng-template #orderForm>
+        <div class="row m-0">
+            <div id="order" class="col-lg-9">
+                <div class="card">
+                    <div class="card-header">პირადი მონაცემები</div>
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td>სახელი</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>გვარი</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ტელეფონი</td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>პირადი ნომერი</td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">მიწოდება</div>
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td>ქვეყანა</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ქალაქი</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>მისამართი</td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">გადახდის მეთოდი</div>
+                    <div class="card-body">
+                        ???
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-right">
+                        ჯამური ღირებულება: {{totalCost}}₾
+                    </div>
+                </div>
+
+                <button class="btn btn-success">შეკვეთა</button>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header">შეკვეთილი პროდუქტები</div>
+                    <div class="card-body">
+                        <div class="productListOnside" *ngFor="let x of productList">
+                            <img src="{{x.ImgURL}}">
+                            <i class="material-icons" (click)="removeItemFromTable(x.ProductCode)">cancell</i>
+                            <div class="productInformation">
+                                <span>{{x.ProductName}}</span>
+                                <br>
+                                <span>{{x.Quantity * x.Price}}₾</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+
+<!--
+<form class="form-horizontal">
+    <div class="form-group form-inline">
+        <label>Type</label>
+        <input type="email" placeholder="Email Address" class="form-control">
+    </div>
+    <div class="form-group form-inline">
+        <label>First Name</label>
+        <input type="password" placeholder="Password" class="form-control">
+    </div>
+</form>
+-->

@@ -1,0 +1,33 @@
+
+#box1{
+    background-color: #f9f9f9;
+    border: 2px solid #cacaca;
+}
+
+#box2 .card-header{
+    background: #e8e8fb;
+}
+
+
+
+table{
+    width: 100%;
+}
+
+table tr td{
+    padding-top:  50px !important;
+}
+
+table tr td:first-child{
+    width: 30%;
+    text-align: right;
+}
+
+table input {
+  /* outline: 0px;
+  border-width: 0 0 1px;
+  border-color: #8c8383;
+  background-color: transparent; */
+  margin-left: 10px;
+  width: 100%;
+}

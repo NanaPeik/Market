@@ -1,0 +1,241 @@
+<div id="header">
+  <div id="step_one">
+    <div class="items">
+      <button class="btn btn-light">LOGO</button>
+    </div>
+    <div class="items text-center">
+      <div class="input-group">
+        <div>
+          <select class="selectpicker" data-width="fit" title="კატეგორია" (change)="mainCategoryDropdownChange($event)">
+            <option *ngFor="let x of categoryList" value="{{x.ProductCode}}">{{x.Products}}</option>
+          </select>
+        </div>
+
+        <input type="text" class="form-control" placeholder="ძებნა">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="material-icons">search</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="items text-right">
+      <button *ngIf="globalVariables.LoginOrLogout=='LogIn' else showLogOutForm" 
+      class="btn btn-light float-right" (click)="showModal()">{{globalVariables.LoginOrLogout}}</button>
+      <ng-template #showLogOutForm>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+            <!-- {{globalVariables.LoginOrLogout}} -->
+            იუზერის სახელი
+          </button>
+          <div class="dropdown-menu">
+            <ul class="list-group list-group-flush">
+              <li class="dropdown-item" (click)="showProfile()">პროფილი</li>
+              <div class="dropdown-divider"></div>
+              <li class="dropdown-item" (click)='logout()'>გასვლა</li>
+            </ul>
+          </div>
+        </div>
+      </ng-template>
+      
+      
+    </div>
+  </div>
+
+  <div id="step_two">
+
+    <div style="display: flex;" id="mainNavigation">
+      <button routerLinkActive="active" class="btn btn-secondary" type="button" routerLink="/user/home">მთავარი</button>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          პროდუქცია
+        </button>
+        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+
+          <div *ngFor="let j of categoryList">
+            <li class="dropdown-item" *ngIf="j.Products == undefined" [routerLink]="['/user/productList', j.ProductCode]">
+              <a>{{j.Products}} - კოდი({{j.ProductCode}})</a>
+            </li>
+
+
+            <li class="dropdown-submenu" *ngIf="j.Products != undefined">
+              <a class="dropdown-item" tabindex="-1" [routerLink]="">{{j.Products}} - კოდი({{j.ProductCode}})</a>
+              <ul class="dropdown-menu">
+
+                <li class="dropdown-item" *ngFor="let k of j.Accesories" [routerLink]="['/user/productList', k.AccesoriesCode]">
+                  <a tabindex="-1">{{k.AccesoriesName}} - კოდი({{k.AccesoriesCode}})</a>
+                </li>
+              </ul>
+            </li>
+          </div>
+
+
+          <!-- <li class="dropdown-item"><a href="#">Some action</a></li>
+          <li class="dropdown-item"><a href="#">Some other action</a></li>
+          <li class="dropdown-submenu">
+            <a class="dropdown-item" tabindex="-1" href="#">Hover me for more options</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a tabindex="-1" href="#">Second level</a></li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="#">Even More..</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a href="#">3rd level</a></li>
+                  <li class="dropdown-submenu"><a class="dropdown-item" href="#">another level</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-item"><a href="#">4th level</a></li>
+                      <li class="dropdown-item"><a href="#">4th level</a></li>
+                      <li class="dropdown-item"><a href="#">4th level</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-item"><a href="#">3rd level</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-item"><a href="#">Second level</a></li>
+              <li class="dropdown-item"><a href="#">Second level</a></li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+      <button routerLinkActive="active" class="btn btn-secondary" type="button" routerLink="/user/contact">კონტაქტი</button>
+      <button routerLinkActive="active" class="btn btn-secondary" type="button" routerLink="/user/faq">კითხვებზე პასუხი</button>
+
+    </div>
+
+    <!-- <nav id="mainNavigation" class="navbar navbar-expand navbar-light bg-secondary">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/user/home">მთავარი</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" [routerLink]="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">პროდუქცია</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/user/productList">კატეგორია 1</a>
+              <a class="dropdown-item" routerLink="/user/productList">კატეგორია 2</a>
+              <a class="dropdown-item" routerLink="/user/productList">კატეგორია 3</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="">კონტაქტი</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/user/faq">კითხვებზე პასუხი</a>
+          </li>
+        </ul> 
+      </div>
+    </nav>-->
+
+    <div>
+      <button class="btn btn-light float-left mr-1" [routerLink]="['/user/favorite', '*']">
+        <i class="material-icons">favorite</i>
+      </button>
+
+      <button class="btn btn-light" routerLink="/user/shoppingCart">
+        <span>კალათა(0)</span>
+        <i class="material-icons">shopping_cart</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <!--Logout ის ფორმა-->
+  <!-- <div class="btn-group">
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </div> -->
+
+<!-- ავტორიზაციის მოდალური ფორმა -->
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">
+          <i id="goBackToLogin" class="material-icons" (click)="showLoginForm()"
+            *ngIf="modalTitle == 'რეგისტრაცია'">keyboard_arrow_left</i>
+          <span>{{modalTitle}}</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div *ngIf="modalTitle == 'ავტორიზაცია'; else elseBlock">
+          <div id="login">
+            <input type="email" class="form-control" placeholder="ელ.ფოსტა" #email/>
+            <input type="password" class="form-control" placeholder="პაროლი" #password/>
+            <button class="btn btn-success m-auto" (click)="login(email,password)">შესვლა</button>
+
+            <div id="accountOptions">
+              <a id="forgotPassword" [routerLink]="">დაგავიწყდათ პაროლი?</a>
+              <a id="registry" [routerLink]="" (click)="registry()">რეგისტრაცია</a>
+            </div>
+          </div>
+
+          <div class="customHR">ან</div>
+          <!-- <hr class="mt-0"> -->
+
+          <form>
+            <button class="btn btn-primary" type="button"
+              style="width: 50%; display: inline-block !important;">Facebook</button>
+            <button class="btn btn-danger" type="button"
+              style="width: 50%; display: inline-block !important;">Gmail</button>
+          </form>
+        </div>
+
+        <ng-template #elseBlock>
+          <form>
+            <div class="form-group">
+              <label for="name">სახელი</label>
+              <input type="text" class="form-control" id="name" placeholder="სახელი" #fname>
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">გვარი</label>
+              <input type="text" class="form-control" id="lastName" placeholder="გვარი" #lname>
+            </div>
+
+            <div class="form-group">
+              <label for="email">ელ.ფოსტა</label>
+              <input type="email" class="form-control" id="email" placeholder="ელ.ფოსტა" #email>
+            </div>
+
+
+            <div class="form-group">
+              <label for="password">პაროლი</label>
+              <input type="password" class="form-control" id="password" placeholder="პაროლი" #password>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">დაადასტურეთ პაროლი</label>
+              <input type="password" class="form-control" id="confirmPassword" placeholder="დაადასტურეთ პაროლი" #pass>
+            </div>
+
+            <button type="button" class="btn btn-primary float-right" (click)="registerNewUser(fname,lname,email,password,pass)">რეგისტრაცია</button>
+          </form>
+
+        </ng-template>
+
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">დახურვა</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+

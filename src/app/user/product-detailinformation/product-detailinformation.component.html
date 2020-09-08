@@ -1,0 +1,88 @@
+<div class="padding_globally">
+
+    <div id="parentDiv" class="container">
+        <div>
+            <h1>{{productName}}</h1>
+            <div class="row">
+                <div id="slider" class="col-lg-8">
+                    <div class="col-lg-12">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item" *ngFor="let x of images; let first = first"
+                                    [class.active]="first">
+                                    <img class="d-block w-100" src="{{x.URL}}" alt="First slide">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="navigation">
+                            <ol class="carousel-indicators">
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+
+                                <li data-target="#carouselExampleIndicators" class="active"
+                                    *ngFor="let x of images; let index = index" [attr.data-slide-to]="index"
+                                    [ngStyle]="{'background-image': 'url(' + x.URL + ')'}"></li>
+
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div id="productMainInfo" class="col-lg-4">
+                    <div class="col-lg-12">
+                        <div class="text-right">
+                            <h3>{{productPrice}}₾</h3>
+                            <span style="border-bottom: 1px solid #aca899; padding-bottom: 8px;">{{isAvialable}}</span>
+                        </div>
+                        <br>
+                        <p>პროდუქტის კოდი: {{productCode}}</p>
+                        <div id="quantity">
+                            <span>რაოდენობა: &nbsp;&nbsp;</span>
+                            <table>
+                                <tr>
+                                    <td rowspan="2" id="count">{{count}}</td>
+                                    <td>
+                                        <button class="btn btn-light" (click)="changeCount('increase')">+</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-light" (click)="changeCount('decrease')">-</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="mt-2" style="display: flex;">
+                            <button class="material-icons btn btn-light mr-2" type="button" (click)="changeFavoriteIcons.func($event, productCode)">
+                                {{isInFavorite ? "favorite" : "favorite_border"}}
+                            </button>
+                            <button class="btn btn-light">
+                                <span>კალათაში დამატება</span>
+                                <i class="material-icons">shopping_cart</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="productDetailInformation" class="container">
+        <table>
+            <tr *ngFor="let x of productSpecifications">
+                <td>{{x.Name}}</td>
+                <td>{{x.Value}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

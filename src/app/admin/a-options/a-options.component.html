@@ -1,0 +1,89 @@
+<form>
+    <div class="row">
+        <div class="col">
+            <label for="marketName">მაღაზიის სახელი</label>
+            <input type="text" class="form-control" id="marketName" name="marketName" [(ngModel)]="allData.MarketName">
+        </div>
+        <div class="col">
+            <input type="checkbox" class="" id="uploadLogo">
+            <!-- <input type="checkbox" class="form-check-input" id="uploadLogo"> -->
+            <label for="uploadLogo">ლოგოს ატვირთვა</label>
+            <!-- დროებით არის სანამ გაირკვევა რისთვის არის საჭირო -->
+            <div id="boxForImages">
+                <label id="imgSelectButton" class="btn btn-default" *ngIf="imagesList.length == 0">
+                    add <input type="file" (change)="uploadImage.onInputChange($event.target, imagesList)" accept="image/*" hidden>
+                </label>
+        
+                <img class="logoImg" *ngFor="let x of imagesList" src="{{x}}" alt="your image" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="facebookPageLink">Facebook გვერდის ლინკი</label>
+            <input type="text" class="form-control" id="facebookPageLink" name="facebookPageLink"
+                [(ngModel)]="allData.FacebookURL">
+        </div>
+        <div class="col m-0">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="instagramPageLink">Instagram გვერდის ლინკი</label>
+            <input type="text" class="form-control" id="instagramPageLink" name="instagramPageLink"
+                [(ngModel)]="allData.InstagramURL">
+        </div>
+        <div class="col m-0">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="youtubePageLink">Youtube გვერდის ლინკი</label>
+            <input type="text" class="form-control" id="youtubePageLink" name="youtubePageLink"
+                [(ngModel)]="allData.YoutubeURL">
+        </div>
+        <div class="col m-0">
+        </div>
+    </div>
+</form>
+
+
+<div class="card">
+    <h5 class="card-header">საიტის თემა</h5>
+    <div class="card-body customizeCardBody">
+        <select id="theme" class="selectpicker" title="საიტის თემა" data-width="100%">
+            <option *ngFor="let x of allData.Themes" value="{{x.Code}}">{{x.Name}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="card">
+    <h5 class="card-header">ფერები</h5>
+    <div class="card-body customizeCardBody">
+        <select id="color" class="selectpicker" title="ფერები" data-width="100%">
+            <option *ngFor="let x of allData.Colors" value="{{x.Code}}">{{x.Name}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="card">
+    <h5 class="card-header">ენები</h5>
+    <div class="card-body">
+        <table class="table bg-white">
+            <tbody>
+                <tr *ngFor="let x of allData.Language">
+                    <td>
+                        <input type="radio" id="{{x.ABBR}}" class="form-check-input" name="optradio" [checked]="x.ABBR == allData.MainLanguage">
+                        <label for="{{x.ABBR}}">{{x.Name}}</label>
+                    </td>
+                    <td>{{x.ABBR}}</td>
+                    <td class="text-right" *ngIf="x.ABBR == allData.MainLanguage">მთავარი ენა</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-3 mb-5">
+    <button class="btn btn-success m-auto" (click)="saveBTN()">შენახვა</button>
+</div>

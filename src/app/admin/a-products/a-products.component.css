@@ -1,0 +1,54 @@
+
+table{
+    margin-top: 20px;
+}
+
+table thead{
+    background: #b2c3f5;
+}
+
+table tbody td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+table tbody td img{
+    width: 80px;
+    height: 55px;
+}
+
+.card-header{
+    background: #b2c3f5;
+}
+
+.customContainers{
+    width:50%;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    padding: 15px;
+}
+
+
+
+
+
+
+
+
+
+#boxForImages{
+    height: max-content; 
+    background: #fff; 
+}
+
+#imgSelectButton {
+    background: #ede9e3;
+    margin: 0px;
+    padding: 13px 15px;
+    margin: 5px;
+}
+
+.logoImg{
+    height: 50px;
+    margin: 5px;
+}
